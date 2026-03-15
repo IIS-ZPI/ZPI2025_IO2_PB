@@ -55,5 +55,6 @@ class ArithmeticsDiv(IArithmeticsDiv):
 
 
 class ArithmeticsPow(IArithmeticsPow):
+    #comment2 - ksaletra
     def power(self, A: float, B: float) -> float:
         return A ** B
