@@ -44,6 +44,7 @@ class ArithmeticsAdd(IArithmeticsAdd):
     def addition(self, A: float, B: float) -> float:
         #comment3 - 251240
         return A + B
+        #task 6 comment - 251240
 
 #comment 1 krzysztoftomczyk23
 class ArithmeticsMult(IArithmeticsMult):
