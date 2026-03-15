@@ -36,7 +36,7 @@ class ArithmeticsDiff(IArithmeticsDiff):
     def difference(self, A: float, B: float) -> float:
         return A - B
 
-
+#comment1 - 251240
 class ArithmeticsAdd(IArithmeticsAdd):
     def addition(self, A: float, B: float) -> float:
         return A + B
