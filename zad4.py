@@ -42,7 +42,7 @@ class ArithmeticsAdd(IArithmeticsAdd):
         #comment3 - 251240
         return A + B
 
-      
+#comment 1 krzysztoftomczyk23
 class ArithmeticsMult(IArithmeticsMult):
     def multiplication(self, A: float, B: float) -> float:
         return A * B
