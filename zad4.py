@@ -29,3 +29,10 @@ class IArithmeticsPow(ABC):
     @abstractmethod
     def power(self, A: float, B: float) -> float:
         pass
+
+
+class ArithmeticsDiv(IArithmeticsDiv):
+    def division(self, A: float, B: float) -> float:
+        if B == 0:
+            raise ZeroDivisionError("Division by zero is not allowed")
+        return A / B
