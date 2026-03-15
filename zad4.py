@@ -29,7 +29,12 @@ class IArithmeticsPow(ABC):
     @abstractmethod
     def power(self, A: float, B: float) -> float:
         pass
+    
 
+
+class ArithmeticsDiff(IArithmeticsDiff):
+    def difference(self, A: float, B: float) -> float:
+        return A - B
 
 
 class ArithmeticsAdd(IArithmeticsAdd):
