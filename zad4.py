@@ -67,3 +67,4 @@ class ArithmeticsPow(IArithmeticsPow):
     def power(self, A: float, B: float) -> float:
         #comment3 - ksaletra
         return A ** B
+        #adding a comment for task 6 - ksaletra 
