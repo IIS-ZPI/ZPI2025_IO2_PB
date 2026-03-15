@@ -51,7 +51,6 @@ class ArithmeticsMult(IArithmeticsMult):
     def multiplication(self, A: float, B: float) -> float:
         #comment 3 krzysztoftomczyk23
         return A * B
-        #adding a comment for task 6 krzysztoftomczyk23
 
 #comment1 - 251181
 class ArithmeticsDiv(IArithmeticsDiv):
