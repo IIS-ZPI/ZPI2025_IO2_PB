@@ -41,7 +41,7 @@ class ArithmeticsAdd(IArithmeticsAdd):
     def addition(self, A: float, B: float) -> float:
         return A + B
 
-      
+#comment 1 krzysztoftomczyk23
 class ArithmeticsMult(IArithmeticsMult):
     def multiplication(self, A: float, B: float) -> float:
         return A * B
