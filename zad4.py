@@ -30,6 +30,18 @@ class IArithmeticsPow(ABC):
     def power(self, A: float, B: float) -> float:
         pass
 
+
+      
 class ArithmeticsAdd(IArithmeticsAdd):
     def addition(self, A: float, B: float) -> float:
         return A + B
+
+      
+class ArithmeticsPow(IArithmeticsPow):
+    def power(self, A: float, B: float) -> float:
+        return A ** B
+
+      
+class ArithmeticsMult(IArithmeticsMult):
+    def multiplication(self, A: float, B: float) -> float:
+        return A * B
