@@ -31,7 +31,7 @@ class IArithmeticsPow(ABC):
         pass
     
 
-
+#comment1 - 251198_Adrian
 class ArithmeticsDiff(IArithmeticsDiff):
     def difference(self, A: float, B: float) -> float:
         return A - B
