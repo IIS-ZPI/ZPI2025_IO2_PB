@@ -53,7 +53,7 @@ class ArithmeticsDiv(IArithmeticsDiv):
             raise ZeroDivisionError("Division by zero is not allowed")
         return A / B
 
-
+#comment1-ksaletra
 class ArithmeticsPow(IArithmeticsPow):
     def power(self, A: float, B: float) -> float:
         return A ** B
