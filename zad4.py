@@ -44,6 +44,7 @@ class ArithmeticsAdd(IArithmeticsAdd):
       
 class ArithmeticsMult(IArithmeticsMult):
     def multiplication(self, A: float, B: float) -> float:
+        #comment 3 krzysztoftomczyk23
         return A * B
 
      
