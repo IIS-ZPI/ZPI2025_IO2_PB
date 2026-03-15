@@ -60,6 +60,7 @@ class ArithmeticsDiv(IArithmeticsDiv):
         if B == 0:
             raise ZeroDivisionError("Division by zero is not allowed")
         return A / B
+    #adding a comment for task 6 - 251181
 
 #comment1-ksaletra
 class ArithmeticsPow(IArithmeticsPow):
