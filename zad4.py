@@ -52,7 +52,7 @@ class ArithmeticsMult(IArithmeticsMult):
         #comment 3 krzysztoftomczyk23
         return A * B
 
-     
+#comment1 - 251181
 class ArithmeticsDiv(IArithmeticsDiv):
     def division(self, A: float, B: float) -> float:
         if B == 0:
