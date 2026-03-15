@@ -39,21 +39,23 @@ class ArithmeticsDiff(IArithmeticsDiff):
 
 class ArithmeticsAdd(IArithmeticsAdd):
     def addition(self, A: float, B: float) -> float:
+        #comment3 - 251240
         return A + B
 
-      
+#comment 1 krzysztoftomczyk23
 class ArithmeticsMult(IArithmeticsMult):
     def multiplication(self, A: float, B: float) -> float:
         return A * B
 
      
 class ArithmeticsDiv(IArithmeticsDiv):
+    #comment2 - 251181
     def division(self, A: float, B: float) -> float:
         if B == 0:
             raise ZeroDivisionError("Division by zero is not allowed")
         return A / B
 
-
+#comment1-ksaletra
 class ArithmeticsPow(IArithmeticsPow):
     def power(self, A: float, B: float) -> float:
         return A ** B
