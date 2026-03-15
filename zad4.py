@@ -55,6 +55,7 @@ class ArithmeticsMult(IArithmeticsMult):
      
 class ArithmeticsDiv(IArithmeticsDiv):
     def division(self, A: float, B: float) -> float:
+        #comment3 - 251181
         if B == 0:
             raise ZeroDivisionError("Division by zero is not allowed")
         return A / B
