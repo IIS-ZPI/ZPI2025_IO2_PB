@@ -1,1 +1,0 @@
-print("Group Name: PB\nSCRUM Master role: developer\nSCRUM Master GitHub Name: 251240")
