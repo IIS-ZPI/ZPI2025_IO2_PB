@@ -3,15 +3,13 @@ import csv
 
 from src.api import get_currency_data
 from src.analysis import analyze_sessions
-from src.export import export_session_analysis
+from src.export import export_session_analysis, EXPORT_DIR
 
 
 def test_session_analysis_export_flow(mocker):
-    export_dir = os.path.join("..", "exports")
-    os.makedirs(export_dir, exist_ok=True)
 
     filename = "integration_session_test.csv"
-    filepath = os.path.join(export_dir, filename)
+    filepath = os.path.join(EXPORT_DIR, filename)
 
     mock_response = mocker.Mock()
     mock_response.status_code = 200
@@ -71,6 +69,7 @@ def test_session_analysis_export_flow(mocker):
 
 
 def test_session_analysis_handles_empty_api_response(mocker):
+
     mock_response = mocker.Mock()
     mock_response.status_code = 404
 

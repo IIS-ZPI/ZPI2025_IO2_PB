@@ -1,6 +1,11 @@
 import csv
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EXPORT_DIR = os.path.join(BASE_DIR, "exports")
+
+os.makedirs(EXPORT_DIR, exist_ok=True)
+
 
 # ==========================================
 # SESSION ANALYSIS EXPORT
@@ -20,7 +25,7 @@ def export_session_analysis(
 ):
 
 
-    filepath = os.path.join("..", "exports", filename)
+    filepath = os.path.join(EXPORT_DIR, filename)
 
     with open(filepath, "w", newline="") as file:
 
@@ -54,10 +59,9 @@ def export_statistics(
     period,
     stats
 ):
-    filepath = os.path.join("..", "exports", filename)
+    filepath = os.path.join(EXPORT_DIR, filename)
 
     with open(filepath, "w", newline="") as file:
-
         writer = csv.writer(file)
 
         writer.writerow([
@@ -88,10 +92,9 @@ def export_histogram(
     filename,
     histogram
 ):
-    filepath = os.path.join("..", "exports", filename)
+    filepath = os.path.join(EXPORT_DIR, filename)
 
     with open(filepath, "w", newline="") as file:
-
         writer = csv.writer(file)
 
         writer.writerow([
@@ -100,7 +103,6 @@ def export_histogram(
         ])
 
         for h in histogram:
-
             writer.writerow([
                 h["interval"],
                 h["count"]
