@@ -5,6 +5,11 @@ import os
 # ==========================================
 # SESSION ANALYSIS EXPORT
 # ==========================================
+def format_number(value):
+    if isinstance(value, float):
+        return f"{value:.3f}"
+    return value
+
 def export_session_analysis(
     filename,
     currency,
@@ -13,6 +18,7 @@ def export_session_analysis(
     falling,
     unchanged
 ):
+
 
     filepath = os.path.join("..", "exports", filename)
 
@@ -66,10 +72,10 @@ def export_statistics(
         writer.writerow([
             currency,
             period,
-            stats["median"],
-            stats["mode"],
-            stats["std_dev"],
-            stats["variation"]
+            format_number(stats["median"]),
+            format_number(stats["mode"]),
+            format_number(stats["std_dev"]),
+            format_number(stats["variation"])
         ])
 
     print("Statistics exported successfully.")
