@@ -69,9 +69,14 @@ def choose_currency():
         print("Invalid option.")
 
 
-def choose_currency_for_histogram():
+def choose_currency_for_histogram(exclude=None):
+
+    if exclude is None:
+        exclude = []
 
     currencies = ["PLN"] + get_available_currencies()
+
+    currencies = [c for c in currencies if c not in exclude]
 
     while True:
 
@@ -83,12 +88,9 @@ def choose_currency_for_histogram():
 
         print(f"{len(currencies)+1}. Return\n")
 
-        choice = input(
-            f"Type 1-{len(currencies)+1}: "
-        )
+        choice = input(f"Type 1-{len(currencies)+1}: ")
 
         try:
-
             choice = int(choice)
 
             if 1 <= choice <= len(currencies):
@@ -349,7 +351,7 @@ def histogram_flow():
         return
 
     print("\nSECOND CURRENCY")
-    second = choose_currency_for_histogram()
+    second = choose_currency_for_histogram(exclude=[first])
 
     if second is None:
         return
