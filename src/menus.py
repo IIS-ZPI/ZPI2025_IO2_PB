@@ -69,6 +69,40 @@ def choose_currency():
         print("Invalid option.")
 
 
+def choose_currency_for_histogram():
+
+    currencies = ["PLN"] + get_available_currencies()
+
+    while True:
+
+        print("\n=== SELECT CURRENCY ===")
+        print("Here are the available currencies:\n")
+
+        for i, currency in enumerate(currencies, start=1):
+            print(f"{i}. {currency}")
+
+        print(f"{len(currencies)+1}. Return\n")
+
+        choice = input(
+            f"Type 1-{len(currencies)+1}: "
+        )
+
+        try:
+
+            choice = int(choice)
+
+            if 1 <= choice <= len(currencies):
+                return currencies[choice - 1]
+
+            elif choice == len(currencies) + 1:
+                return None
+
+        except:
+            pass
+
+        print("Invalid option.")
+
+
 # ==========================================
 # PERIOD MENU
 # ==========================================
@@ -309,13 +343,13 @@ def statistics_flow():
 def histogram_flow():
 
     print("\nFIRST CURRENCY")
-    first = choose_currency()
+    first = choose_currency_for_histogram()
 
     if first is None:
         return
 
     print("\nSECOND CURRENCY")
-    second = choose_currency()
+    second = choose_currency_for_histogram()
 
     if second is None:
         return
@@ -341,17 +375,51 @@ def histogram_flow():
 
     end = start + timedelta(days=days)
 
-    first_rates = get_currency_data(
-        first,
-        start_date,
-        end.strftime("%Y-%m-%d")
-    )
+    if first == "PLN":
 
-    second_rates = get_currency_data(
-        second,
-        start_date,
-        end.strftime("%Y-%m-%d")
-    )
+        second_rates = get_currency_data(
+            second,
+            start_date,
+            end.strftime("%Y-%m-%d")
+        )
+
+        first_rates = [
+            {
+                "effectiveDate": rate["effectiveDate"],
+                "mid": 1.0
+            }
+            for rate in second_rates
+        ]
+
+    elif second == "PLN":
+
+        first_rates = get_currency_data(
+            first,
+            start_date,
+            end.strftime("%Y-%m-%d")
+        )
+
+        second_rates = [
+            {
+                "effectiveDate": rate["effectiveDate"],
+                "mid": 1.0
+            }
+            for rate in first_rates
+        ]
+
+    else:
+
+        first_rates = get_currency_data(
+            first,
+            start_date,
+            end.strftime("%Y-%m-%d")
+        )
+
+        second_rates = get_currency_data(
+            second,
+            start_date,
+            end.strftime("%Y-%m-%d")
+        )
 
     if not first_rates or not second_rates:
         print("No data available.")

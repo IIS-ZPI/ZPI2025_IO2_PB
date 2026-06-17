@@ -60,18 +60,32 @@ def calculate_statistics(rates):
 # ==========================================
 def create_currency_pair(first_rates, second_rates):
 
+    first_dict = {
+        rate["effectiveDate"]: rate["mid"]
+        for rate in first_rates
+    }
+
+    second_dict = {
+        rate["effectiveDate"]: rate["mid"]
+        for rate in second_rates
+    }
+
+    common_dates = sorted(
+        set(first_dict.keys()) &
+        set(second_dict.keys())
+    )
+
     pair_rates = []
 
-    min_length = min(len(first_rates), len(second_rates))
-
-    for i in range(min_length):
+    for date in common_dates:
 
         pair_value = (
-            first_rates[i]["mid"] /
-            second_rates[i]["mid"]
+            first_dict[date] /
+            second_dict[date]
         )
 
         pair_rates.append({
+            "effectiveDate": date,
             "mid": pair_value
         })
 
