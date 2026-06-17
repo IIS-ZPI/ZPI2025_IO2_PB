@@ -2,14 +2,13 @@ import os
 import csv
 
 from src.menus import statistics_flow
+from src.export import EXPORT_DIR
 
 
 def test_statistics_flow_full_pipeline(mocker):
-    export_dir = os.path.join("..", "exports")
-    os.makedirs(export_dir, exist_ok=True)
 
     filename = "stats_test.csv"
-    filepath = os.path.join(export_dir, filename)
+    filepath = os.path.join(EXPORT_DIR, filename)
 
     mocker.patch(
         "src.menus.get_available_currencies",

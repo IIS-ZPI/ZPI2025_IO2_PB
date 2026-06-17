@@ -1,17 +1,13 @@
+import os
+import csv
 import src.export as export
 
 
-def test_export_session_analysis(tmp_path, mocker):
+def test_export_session_analysis():
 
-    filepath = tmp_path / "session.csv"
-
-    mocker.patch(
-        "src.export.os.path.join",
-        return_value=str(filepath)
-    )
-
+    filename = "session.csv"
     export.export_session_analysis(
-        "session.csv",
+        filename,
         "USD",
         "30",
         10,
@@ -19,20 +15,22 @@ def test_export_session_analysis(tmp_path, mocker):
         2
     )
 
-    assert filepath.exists()
+    filepath = os.path.join(export.EXPORT_DIR, filename)
+
+    assert os.path.exists(filepath)
+
+    with open(filepath, newline="") as file:
+        rows = list(csv.reader(file))
+
+    assert rows[0][0] == "Currency"
 
 
-def test_export_statistics(tmp_path, mocker):
+def test_export_statistics():
 
-    filepath = tmp_path / "statistics.csv"
-
-    mocker.patch(
-        "src.export.os.path.join",
-        return_value=str(filepath)
-    )
+    filename = "statistics.csv"
 
     export.export_statistics(
-        "statistics.csv",
+        filename,
         "EUR",
         "90",
         {
@@ -43,23 +41,22 @@ def test_export_statistics(tmp_path, mocker):
         }
     )
 
-    assert filepath.exists()
+    filepath = os.path.join(export.EXPORT_DIR, filename)
+
+    assert os.path.exists(filepath)
 
 
-def test_export_histogram(tmp_path, mocker):
+def test_export_histogram():
 
-    filepath = tmp_path / "histogram.csv"
-
-    mocker.patch(
-        "src.export.os.path.join",
-        return_value=str(filepath)
-    )
+    filename = "histogram.csv"
 
     histogram = [
         {"interval": "0-10", "count": 5},
         {"interval": "10-20", "count": 3}
     ]
 
-    export.export_histogram("histogram.csv", histogram)
+    export.export_histogram(filename, histogram)
 
-    assert filepath.exists()
+    filepath = os.path.join(export.EXPORT_DIR, filename)
+
+    assert os.path.exists(filepath)
