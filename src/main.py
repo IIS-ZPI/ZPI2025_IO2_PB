@@ -1,4 +1,4 @@
-from menus import start_application
+from src.menus import start_application
 
 
 if __name__ == "__main__":
