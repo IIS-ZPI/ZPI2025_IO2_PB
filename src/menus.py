@@ -1,17 +1,17 @@
 from datetime import datetime, timedelta
-from api import (
+from src.api import (
     get_available_currencies,
     get_currency_data
 )
-from analysis import (
+from src.analysis import (
     analyze_sessions,
     calculate_statistics,
     create_currency_pair,
     build_histogram
 )
-from visualization import display_histogram
-from export import export_histogram, export_statistics, export_session_analysis
-from utils import validate_date
+from src.visualization import display_histogram
+from src.export import export_histogram, export_statistics, export_session_analysis
+from src.utils import validate_date
 
 
 # ==========================================
