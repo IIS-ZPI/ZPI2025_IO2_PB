@@ -329,7 +329,7 @@ def test_statistics_flow_export(mocker):
 def test_histogram_flow_export(mocker):
 
     mocker.patch(
-        "src.menus.choose_currency",
+        "src.menus.choose_currency_for_histogram",
         side_effect=["USD", "EUR"]
     )
 
@@ -340,7 +340,7 @@ def test_histogram_flow_export(mocker):
 
     mocker.patch(
         "src.menus.get_currency_data",
-        return_value=[1, 2, 3]
+        return_value=[{"effectiveDate": "2024-01-01", "mid": 1}]
     )
 
     mocker.patch(
@@ -348,13 +348,15 @@ def test_histogram_flow_export(mocker):
         return_value=[1, 2]
     )
 
-    histogram = [
-        {"interval": "0-10", "count": 5}
-    ]
+    histogram = [{"interval": "0-10", "count": 5}]
 
     mocker.patch(
         "src.menus.build_histogram",
         return_value=histogram
+    )
+
+    mocker.patch(
+        "src.menus.display_histogram"
     )
 
     mocker.patch(
@@ -369,13 +371,17 @@ def test_histogram_flow_export(mocker):
 
     mocker.patch(
         "builtins.input",
-        side_effect=["MONTHLY", "histogram.csv"]
+        side_effect=[
+            "MONTHLY",        # analysis_type
+            "histogram.csv"   # filename
+        ]
     )
 
     export_mock = mocker.patch(
         "src.menus.export_histogram"
     )
 
+    import src.menus as menus
     menus.histogram_flow()
 
     export_mock.assert_called_once_with(
