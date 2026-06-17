@@ -120,8 +120,8 @@ def build_histogram(rates, number_of_bins=13):
                     count += 1
 
         interval = (
-            f"{start:.4f} "
-            f"{end:.4f}"
+            f"{start:.3f} "
+            f"{end:.3f}"
         )
 
         histogram.append({

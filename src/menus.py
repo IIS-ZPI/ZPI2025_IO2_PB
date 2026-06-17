@@ -39,6 +39,10 @@ def choose_currency():
 
     currencies = get_available_currencies()
 
+    if not currencies:
+        print("Currency list is not available. Please check your internet connection or try again later.")
+        return None
+
     while True:
 
         print("\n=== SELECT CURRENCY ===")
@@ -282,12 +286,12 @@ def statistics_flow():
     if display == "YES":
 
         print("\n=== STATISTICAL MEASURES ===")
-        print("Median:", round(stats["median"], 4))
-        print("Mode:", stats["mode"])
+        print("Median:", round(stats["median"], 3))
+        print("Mode:", round(stats["mode"], 3) if isinstance(stats["mode"], float) else stats["mode"])
         print("Standard deviation:",
-              round(stats["std_dev"], 4))
+              round(stats["std_dev"], 3))
         print("Coefficient of variation:",
-              round(stats["variation"], 2), "%")
+              round(stats["variation"], 3), "%")
 
     export = export_menu()
 
