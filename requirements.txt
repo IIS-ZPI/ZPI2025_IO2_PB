@@ -1,0 +1,8 @@
+requests
+matplotlib
+pytest
+pytest-mock
+pytest-cov
+requests-mock
+flake8
+black
