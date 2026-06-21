@@ -17,6 +17,183 @@ The project was developed using **Python** and is designed to analyze currency e
 - **GitHub** – source code hosting and project management platform.
 - **GitHub Actions** – Continuous Integration (CI) and Continuous Deployment (CD) automation.
 
+## User Manual
+
+### Starting the Application
+
+After installing the required dependencies, start the application from the root directory:
+
+```bash
+python src/main.py
+```
+
+After launch, the main menu will be displayed:
+
+```text
+=== NBP CURRENCY ANALYSIS SYSTEM ===
+Choose analysis type:
+
+1. Calculate the number of rising, falling and unchanged sessions
+2. Calculate statistical measures (Median, Mode, Standard deviation, Coefficient of variation)
+3. Determine distribution of monthly and quarterly changes between currency pairs
+4. Exit application
+
+Type 1-4 and press Enter to choose the corresponding option:
+```
+
+Select an option by entering the corresponding number.
+
+---
+
+### 1. Session Analysis
+
+This option analyzes exchange rate movements for a selected currency and determines the number of:
+
+- Rising sessions
+- Falling sessions
+- Unchanged sessions
+
+#### Steps
+
+1. Select a currency from the available NBP currency list.
+2. Select an analysis period:
+   - 1 week
+   - 2 weeks
+   - 1 month
+   - 1 quarter (3 months)
+   - 1/2 year (6 months)
+   - 1 year
+
+3. Choose whether the results should be displayed on the screen.
+4. Optionally export the results to a CSV file.
+
+#### Example Output
+
+```text
+=== SESSION ANALYSIS RESULT ===
+Rising sessions: 12
+Falling sessions: 8
+Unchanged sessions: 1
+```
+
+---
+
+### 2. Statistical Analysis
+
+This option calculates descriptive statistics for the selected currency exchange rate data.
+
+#### Calculated Measures
+
+- Median
+- Mode
+- Standard Deviation
+- Coefficient of Variation
+
+#### Steps
+
+1. Select a currency.
+2. Select an analysis period.
+3. Choose whether to display the calculated statistics.
+4. Optionally export the results to a CSV file.
+
+#### Example Output
+
+```text
+=== STATISTICAL MEASURES ===
+Median: 0.059
+Mode: 0.059
+Standard deviation: 0.001
+Coefficient of variation: 1.117 %
+```
+
+---
+
+### 3. Currency Pair Histogram Analysis
+
+This option creates a custom currency pair and analyzes the distribution of exchange rate changes.
+
+#### Steps
+
+1. Select the first currency.
+2. Select the second currency.
+3. Enter the analysis start date in the format:
+
+```text
+YYYY-MM-DD
+```
+
+4. Choose the analysis type:
+   - MONTHLY
+   - QUARTERLY
+
+5. The application generates:
+   - A histogram table
+   - A graphical histogram using Matplotlib
+
+6. Optionally export the histogram data to a CSV file.
+
+#### Example Histogram Output
+
+```text
+Interval                  Number of changes
+-0.127 -0.108             1
+-0.108 -0.090             0
+-0.090 -0.072             1
+-0.072 -0.053             3
+...
+```
+
+---
+
+### Exporting Results
+
+For every analysis type, the application allows exporting results to CSV files.
+
+When prompted:
+
+```text
+Do you want to export the calculated data into a CSV file? Type YES or NO:
+```
+
+enter:
+
+```text
+YES
+```
+
+and provide a file name, for example:
+
+```text
+statistics_eur.csv
+```
+
+Exported files are stored in:
+
+```text
+/exports
+```
+
+---
+
+### Returning to Previous Menus
+
+Most application menus provide a **Return** option allowing the user to cancel the current operation and return to the menu without restarting the application.
+
+---
+
+### Exiting the Application
+
+The application can be closed by:
+
+- Selecting option **4** in the main menu, or
+- Answering **NO** when prompted:
+
+```text
+Do you want to continue using the application? Type YES or NO:
+```
+
+After exiting, the application terminates gracefully and returns control to the operating system.
+
 ### Dependencies
 
 The project dependencies are defined in the `requirements.txt` file:
@@ -128,7 +305,7 @@ This process ensures that every change introduced into the repository is automat
 In this folder there is also folder for integrations tests:
 
 ```text
-/integration
+/tests/integration
 ```
 
 This folder contains integration tests that verify complete data processing workflows, such as histogram generation, session analysis, and statistical computation.
@@ -136,7 +313,7 @@ This folder contains integration tests that verify complete data processing work
 There is also folder for acceptance tests:
 
 ```text
-/acceptance
+/tests/acceptance
 ```
 
 This file contains acceptance tests that validate the application’s core functionality, including session analysis, statistical computations, histogram generation, data export, input validation, error handling, and overall system stability during typical user workflows.
@@ -230,17 +407,24 @@ This approach ensures complete traceability of defects, corrective actions, disc
 │   ├───gannt
 │   │       zpi_PB_gannt_chart.xlsx
 │   │
+│   ├───architecture
+│   │       System Architecture Description.docx
+│   │
 │   ├───requirements
 │   │       system_specification_document.pdf
 │   │
+│   ├───test_reports
+│   │       Test Execution and Defect Report.md
+│   │
 │   ├───sprint_reports
 │   │       Sprint 1 raport.docx
-│   │
+│   │       Sprint 2 raport.docx
 │   │
 │   └───uml
 │           System Activity Diagram.jpg
 │           System Components Diagram.jpg
 │           System Sequence Diagram.jpg
+│           System Diagrams Description.docx
 │
 ├───exports
 │
